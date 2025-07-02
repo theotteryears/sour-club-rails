@@ -377,21 +377,22 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv
   importmap-rails
   jbuilder
   kamal
   propshaft
-  puma (>= 5.0)
+  puma (>= 6.6.0)
   rails (~> 8.0.2)
   rubocop-rails-omakase
   selenium-webdriver
   solid_cable
   solid_cache
   solid_queue
-  sqlite3 (>= 2.1)
+  sqlite3 (>= 2.7.1)
   stimulus-rails
-  tailwindcss-rails (~> 4.2)
-  tailwindcss-ruby (~> 4.1)
+  tailwindcss-rails (~> 4.2.3)
+  tailwindcss-ruby (~> 4.1.11)
   thruster
   turbo-rails
   tzinfo-data
