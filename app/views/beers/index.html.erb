@@ -1,31 +1,16 @@
 <div class="max-w-4xl mx-auto bg-gray-50 p-6">
-  <h1 class="text-4xl font-extrabold text-center mb-10 text-gray-800">Beer List</h1>
+  <h1 class="text-4xl font-extrabold text-center mb-8 text-gray-800">Beer List</h1>
 
-  <!-- Add Beer Button: moved outside the beer loop -->
-  <div class="flex justify-center mb-10">
-    <%= link_to "Add a New Beer", new_beer_path, class: "inline-block px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-200" %>
+  <div class="flex justify-center mb-8">
+    <%= link_to "Add a New Beer", new_beer_path,
+      class: "inline-block px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-200" %>
   </div>
 
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <% @beers.each do |beer| %>
-      <div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <%= button_to beer_path(beer),
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: "absolute top-2 right-2 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-700 transition" do %>
-          &times;
-        <% end %>
+  <div id="beer_list">
+    <%= turbo_stream_from "beers" %>
 
-        <% if beer.image.attached? %>
-          <%= image_tag beer.image, class: "mb-4 rounded-lg w-full object-cover", alt: "#{beer.name} image" %>
-        <% end %>
-
-        <h2 class="text-2xl font-bold mb-2 text-gray-800"><%= beer.name %></h2>
-        <p class="text-gray-600 mb-1"><span class="font-semibold">Brewery:</span> <%= beer.brewery %></p>
-        <p class="text-gray-600 mb-1"><span class="font-semibold">Sourness:</span> <%= beer.sourness %> / 10</p>
-        <p class="text-gray-600 mb-1"><span class="font-semibold">Design:</span> <%= beer.design %> / 10</p>
-        <p class="text-pink-600 font-semibold mt-2"><%= beer.jenesaisquoi %></p>
-      </div>
-    <% end %>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <%= render @beers %>
+    </div>
   </div>
 </div>
