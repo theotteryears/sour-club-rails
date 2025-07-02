@@ -9,7 +9,7 @@
   <div id="beer_list">
     <%= turbo_stream_from "beers" %>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div id="beer_grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <%= render @beers %>
     </div>
   </div>

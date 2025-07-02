@@ -7,7 +7,7 @@
   <% end %>
 
   <% if beer.image.attached? %>
-    <%= image_tag beer.image, class: "mb-4 rounded-lg w-full object-cover", alt: "#{beer.name} image" %>
+    <%= image_tag url_for(beer.image), class: "mb-4 rounded-lg w-full object-cover", alt: "#{beer.name} image" %>
   <% end %>
 
   <h2 class="text-2xl font-bold mb-2 text-gray-800"><%= beer.name %></h2>
