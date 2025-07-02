@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  brewery: MyString
+  sourness: 1
+  design: 1
+  jenesaisquoi: MyString
+
+two:
+  name: MyString
+  brewery: MyString
+  sourness: 1
+  design: 1
+  jenesaisquoi: MyString
