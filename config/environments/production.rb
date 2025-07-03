@@ -96,4 +96,8 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  Rails.application.routes.default_url_options = {
+  host: "chris-collis.com",
+  protocol: "https"  # or 'http' if you don't have SSL
+}
 end
