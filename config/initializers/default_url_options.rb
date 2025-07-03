@@ -1,6 +1,11 @@
-Rails.application.routes.default_url_options[:host] =
-  if Rails.env.production?
-    "https://chris-collis.com"
-  else
-    "localhost:3000"
-  end
+Rails.application.routes.default_url_options = if Rails.env.production?
+  {
+    host: "chris-collis.com",
+    protocol: "https"
+  }
+else
+  {
+    host: "localhost:3000",
+    protocol: "http"
+  }
+end
