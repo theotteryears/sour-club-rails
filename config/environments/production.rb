@@ -98,6 +98,6 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   Rails.application.routes.default_url_options = {
   host: "sourclub.chris-collis.com",
-  protocol: "https"  # or 'http' if you don't have SSL
+  protocol: "https"
 }
 end
