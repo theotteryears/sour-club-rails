@@ -1,5 +1,6 @@
 class Beer < ApplicationRecord
   has_one_attached :image
+  validates :name, :brewery, :design, :sourness, presence: true
 
   after_create_commit -> {
   beer_with_attachment = Beer.includes(image_attachment: :blob).find(id)
