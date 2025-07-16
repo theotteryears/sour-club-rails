@@ -1,4 +1,6 @@
 class BeersController < ApplicationController
+  before_action :set_beer, only: [:edit, :update, :destroy]
+
   def index
     @beers = Beer.order(created_at: :desc)
   end
@@ -16,8 +18,19 @@ class BeersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @beer.update(beer_params)
+      redirect_to beers_path, notice: "Beer updated successfully."
+    else
+      flash.now[:alert] = "Failed to update the beer."
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
-    @beer = Beer.find(params[:id])
     @beer.destroy
 
     flash.now[:notice] = "Beer deleted successfully."
@@ -30,7 +43,11 @@ class BeersController < ApplicationController
 
   private
 
+  def set_beer
+    @beer = Beer.find(params[:id])
+  end
+
   def beer_params
-  params.require(:beer).permit(:name, :brewery, :sourness, :design, :jenesaisquoi, :image)
+    params.require(:beer).permit(:name, :brewery, :sourness, :design, :jenesaisquoi, :image)
   end
 end

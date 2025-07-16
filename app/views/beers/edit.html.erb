@@ -1,0 +1,57 @@
+<div class="max-w-lg mx-auto bg-gray-50 p-6 rounded-lg shadow-md mt-10">
+  <h1 class="text-4xl font-extrabold text-center mb-8 text-gray-800">Edit Sour Beer</h1>
+
+  <%= form_with(model: @beer, local: false, html: { class: "space-y-6" }) do |form| %>
+    <% if @beer.errors.any? %>
+      <div class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+        <h2 class="font-semibold mb-2">
+          <%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:
+        </h2>
+        <ul class="list-disc list-inside">
+          <% @beer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :name, class: "block mb-2 font-semibold text-gray-700" %>
+      <%= form.text_field :name, class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+    </div>
+
+    <div>
+      <%= form.label :brewery, class: "block mb-2 font-semibold text-gray-700" %>
+      <%= form.text_field :brewery, class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+    </div>
+
+    <div>
+      <%= form.label :sourness, class: "block mb-2 font-semibold text-gray-700" %>
+      <%= form.number_field :sourness, min: 0, max: 10, class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+    </div>
+
+    <div>
+      <%= form.label :design, class: "block mb-2 font-semibold text-gray-700" %>
+      <%= form.number_field :design, min: 0, max: 10, class: "w-full border bg-white border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+    </div>
+
+    <div>
+      <%= form.label :jenesaisquoi, class: "block mb-2 font-semibold text-gray-700" %>
+      <%= form.select :jenesaisquoi, ['Mon Dieu!', 'Incroyable', 'Très bon', 'Tout à fait bien', 'Assez mauvais', 'Tout simplement horrible'], { prompt: "Select an option" }, class: "w-full border bg-white border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+    </div>
+
+    <div>
+      <%= form.label :image, "Beer Image", class: "block mb-2 font-semibold text-gray-700" %>
+      <%= form.file_field :image, accept: "image/*", capture: "environment", class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <div id="image-preview" class="mt-4"></div>
+    </div>
+
+    <div>
+      <%= form.submit "Update Sour Beer", class: "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-md transition duration-200" %>
+    </div>
+  <% end %>
+
+  <div class="mt-6 text-center">
+    <%= link_to "Back to list", beers_path, class: "text-indigo-600 hover:underline font-semibold" %>
+  </div>
+</div>
