@@ -1,7 +1,7 @@
-<div class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+<div id="<%= dom_id(beer) %>" class="relative bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
   <%= button_to beer_path(beer),
       method: :delete,
-      data: { confirm: "Are you sure?" },
+      data: { turbo_confirm: "Are you sure?" },
       class: "absolute top-2 right-2 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-700 transition" do %>
     X
   <% end %>

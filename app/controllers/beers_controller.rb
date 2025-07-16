@@ -17,9 +17,15 @@ class BeersController < ApplicationController
   end
 
   def destroy
-  @beer = Beer.find(params[:id])
-  @beer.destroy
-  redirect_to beers_path, notice: "Beer deleted successfully."
+    @beer = Beer.find(params[:id])
+    @beer.destroy
+
+    flash.now[:notice] = "Beer deleted successfully."
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to beers_path, notice: "Beer deleted successfully." }
+    end
   end
 
   private
