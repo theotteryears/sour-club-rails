@@ -17,32 +17,32 @@
 
     <div>
       <%= form.label :name, class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.text_field :name, class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <%= form.text_field :name, class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
     </div>
 
     <div>
       <%= form.label :brewery, class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.text_field :brewery, class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <%= form.text_field :brewery, class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
     </div>
 
     <div>
       <%= form.label :sourness, class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.number_field :sourness, min: 0, max: 10, class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <%= form.number_field :sourness, min: 0, max: 10, class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
     </div>
 
     <div>
       <%= form.label :design, class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.number_field :design, min: 0, max: 10, class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <%= form.number_field :design, min: 0, max: 10, class: "w-full border bg-white border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
     </div>
 
     <div>
       <%= form.label :jenesaisquoi, class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.select :jenesaisquoi, ['Mon Dieu!', 'Incroyable', 'Très bon', 'Tout à fait bien', 'Assez mauvais', 'Tout simplement horrible'], { prompt: "Select an option" }, class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <%= form.select :jenesaisquoi, ['Mon Dieu!', 'Incroyable', 'Très bon', 'Tout à fait bien', 'Assez mauvais', 'Tout simplement horrible'], { prompt: "Select an option" }, class: "w-full border bg-white border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
     </div>
 
     <div>
       <%= form.label :image, "Beer Image", class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.file_field :image, accept: "image/*", capture: "environment", class: "w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
+      <%= form.file_field :image, accept: "image/*", capture: "environment", class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
       <div id="image-preview" class="mt-4"></div>
     </div>
 
