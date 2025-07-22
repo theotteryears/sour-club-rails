@@ -2,7 +2,24 @@ class BeersController < ApplicationController
   before_action :set_beer, only: [:edit, :update, :destroy]
 
   def index
-    @beers = Beer.order(created_at: :desc)
+    sort_by = params[:sort] || 'created_at'
+    direction = params[:direction] || 'desc'
+
+    # Validate sort and direction parameters to prevent SQL injection
+    allowed_sort_columns = %w[created_at name brewery sourness design]
+    allowed_directions = %w[asc desc]
+
+    sort_by = 'created_at' unless allowed_sort_columns.include?(sort_by)
+    direction = 'desc' unless allowed_directions.include?(direction)
+
+    @beers = Beer.order(sort_by => direction)
+
+    if params[:query].present?
+      query = "%#{params[:query].downcase}%"
+      @beers = @beers.where('LOWER(name) LIKE ? OR LOWER(brewery) LIKE ?', query, query)
+    end
+
+    @beers = @beers.page(params[:page]).per(9) # 9 items per page (3x3 grid)
   end
 
   def new

@@ -40,10 +40,12 @@
       <%= form.select :jenesaisquoi, ['Mon Dieu!', 'Incroyable', 'Très bon', 'Tout à fait bien', 'Assez mauvais', 'Tout simplement horrible'], { prompt: "Select an option" }, class: "w-full border bg-white border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
     </div>
 
-    <div>
+    <div data-controller="image-preview">
       <%= form.label :image, "Beer Image", class: "block mb-2 font-semibold text-gray-700" %>
-      <%= form.file_field :image, accept: "image/*", capture: "environment", class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
-      <div id="image-preview" class="mt-4"></div>
+      <%= form.file_field :image, accept: "image/*", capture: "environment", 
+                         class: "w-full bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500", 
+                         data: { image_preview_target: "input" } %>
+      <div data-image-preview-target="preview" class="mt-4 bg-gray-100 border border-gray-300 rounded-lg overflow-hidden"></div>
     </div>
 
     <div>

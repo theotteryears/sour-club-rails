@@ -67,3 +67,6 @@ gem "tailwindcss-ruby", "~> 4.1.11"
 gem "tailwindcss-rails", "~> 4.3.0"
 
 gem "dotenv"
+
+# Pagination
+gem "kaminari", "~> 1.2.2"

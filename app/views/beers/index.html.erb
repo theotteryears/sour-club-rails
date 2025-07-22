@@ -6,11 +6,28 @@
       class: "inline-block px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-200" %>
   </div>
 
+
+  <%= render "search" %>
+
   <div>
     <%= turbo_stream_from "beers" %>
 
-    <div id="beer_grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <%= render @beers %>
-    </div>
+    <%= turbo_frame_tag "beer_grid" do %>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <% if @beers.any? %>
+          <%= render @beers %>
+        <% else %>
+          <div class="col-span-full text-center py-12 bg-white rounded-lg">
+            <p class="text-gray-500 text-lg">No beers found. Try a different search or add a new beer.</p>
+          </div>
+        <% end %>
+      </div>
+
+      <% if @beers.size > 9 %>
+        <div class="mt-8 flex justify-center">
+          <%= paginate @beers %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
